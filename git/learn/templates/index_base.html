@@ -10,6 +10,7 @@
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'js/click.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/user.css'%}">
 </head>
 <body>
 <div class="container－fluid">
@@ -38,12 +39,24 @@
 			</div>
 		</div>
 
-		<div class="col-md-3 " style="margin-top:25px">
+		<div class="col-md-3 " style="margin-top:25px ">
 			<div>
-				<ul class="nav navbar-nav" id="nav_select">
+				<ul id="nav_select" class=" nav navbar-nav">
 					<li>
                         {% if usermail %}
-                            <a href="{% url "Formal:index" %}">{{ usermail }}</a> <a href="{% url "Formal:logout"%}">退出</a>
+                            <div class="userli userul user userhover">
+    <ul>
+        <li>
+            <a href="{% url 'Formal:index' %}">{{ usermail }}</a>
+            <ul>
+                <li><a href="">个人信息</a></li>
+                <li>
+                    <a href="{% url 'Formal:logout' %}" >退出</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
                             {% else %}
 						<a href="{% url "Formal:login" %}" >登录</a>
                         {% endif %}

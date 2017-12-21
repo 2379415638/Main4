@@ -16,10 +16,10 @@
         <p>{{ str }}</p>
         <table align="center" border="1" cellpadding="0" cellspacing="0" width="400" height="300" >
             <tr>
-                <td> &nbsp;Mail:{{ form.usermail}}</td>
+                <td style="padding-right:145px">{{ form.usermail}}</td>
                 </tr>
-            <tr><td>Pass:{{ form.userpass }}</td></tr>
-            <tr><td style="padding-right: 48px">{{ form.captcha }}</td></tr>
+            <tr><td style="padding-right:145px">{{ form.userpass }}</td></tr>
+            <tr><td style="padding-right:34px">{{ form.captcha }}</td></tr>
             <tr><td><input type="submit" value="登录" class="button buttonhavor"></td></tr>
         </table>
 
@@ -28,3 +28,4 @@
 {% endblock %}
 </body>
 </html>
+{#<input type="text" placeholder="验证码" name="identify"><img src="{{ image }}" style="margin-left: 9px">#}
