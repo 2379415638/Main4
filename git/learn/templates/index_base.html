@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/click.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="container－fluid">
+	<div class="row" id="portal_head"><!--网页头部div-->
+		<div class="col-md-8 col-md-offset-1 text-left">
+			<div class="col-md-2" style="float:left">
+				<abbr title="在代码中提高!" style="text-decoration: none;"><h1>Codeup</h1>  </abbr>
+			</div>
+			<div class="col-md-3" style="margin-top:25px">
+				<div>
+				<ul class="nav navbar-nav" >
+					<li>
+						<a href="{% url 'Formal:index' %}">首页</a>
+					</li>
+					<li>
+						<a href="#">博客</a>
+					</li>
+					<li>
+						<a href="{% url 'Formal:contact' %}" >联系</a>
+					</li>
+				</ul>
+			</div>
+				</div>
+			<div class="col-md-2" style="margin-top:39px">
+				{% include "time.html" %}
+			</div>
+		</div>
+
+		<div class="col-md-3 " style="margin-top:25px">
+			<div>
+				<ul class="nav navbar-nav" id="nav_select">
+					<li>
+                        {% if usermail %}
+                            <a href="{% url "Formal:index" %}">{{ usermail }}</a> <a href="{% url "Formal:logout"%}">退出</a>
+                            {% else %}
+						<a href="{% url "Formal:login" %}" >登录</a>
+                        {% endif %}
+					</li>
+					<li style="margin-top:15px;">
+						|
+					</li>
+					<li>
+						<a href="{% url "Formal:user"%}">注册</a>
+					</li>
+				</ul>
+			</div>
+
+
+
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="tape">
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+			{% block content %}
+			{% endblock %}
+
+
+
+	{% block footer %}
+	<div class="container-fluid" style="">
+		<div class="row">
+			<div class="tape">
+			</div>
+		</div>
+		<div id="portal_foot">
+			<div class="row">
+				<div class="info">
+					<p>
+						Deployed by <a href="http://nginx.org/en/docs/">nignx</a> and <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uwsgi</a>
+						<span class="separator">|</span>
+						Powered by <a href="https://docs.djangoproject.com/en/2.0/">Django</a>
+						<span class="separator">|</span>
+						Modeled by <a href="https://v3.bootcss.com/">Bootstrap</a>
+                        <a href="{% url "Formal:advice" %}">反馈</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>

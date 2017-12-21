@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css">
+
+</head>
+<body>
+{% extends 'index_base.html' %}
+{% load static %}
+{% block content %}
+        <script language="JavaScript">
+        function send() {
+                var usermail = document.getElementById("usermail").value;
+                if (usermail != "") {
+                    window.location = '/email/' + usermail;
+                }
+                else{
+                    alert("邮箱不能为空");
+                }
+        }
+    </script>
+<div style="border: solid 1px;width: 500px;height: 500px; margin-bottom: 230px;margin-top:100px;margin-left: 500px;padding:70px 50px 50px 50px;background-color:#1b6d85">
+ <p style="font-size: 30px">注册</p>
+    <form method="post" style="background-color:white;margin-top: 50px" action="{% url "Formal:user" %}">
+        <p>{{ response }}</p>
+    {% csrf_token %}
+        <table align="center" border="1" cellpadding="0" cellspacing="0" width="400" height="300" >
+            <tr>
+                <td>Mail:<input type="email" name="usermail" id="usermail" value={{ inputmail }}><input type="button" value="获取验证码" style="margin-left: 20px;width: 80px" class="button buttonhavor" onclick="send()"></td>
+                </tr>
+            <tr><td style="padding-right: 102px">Pass:{{ form.userpass }}</td></tr>
+            <tr><td style="padding-right: 103px">Name:{{ form.username }}</td></tr>
+            <tr><td style="padding-right: 103px">Identify:<input type="text" name="identify"></td></tr>
+            <tr><td><input type="submit" value="注册" class="button buttonhavor"></td></tr>
+
+        </table>
+
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>
